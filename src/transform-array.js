@@ -12,16 +12,16 @@ module.exports = function transform(arr) {
   for (let i = 0; i < arr.length; i++){
    if(arr[i] != '--discard-next' && arr[i] != '--discard-prev' && arr[i] != '--double-next' && arr[i] != '--double-prev'){
      transform.push(arr[i]);
-     if(arr[i+1] === '--double-prev' && arr[i-1] != '--discard-next' && arr[i] != undefined){
+     if(arr[i+1] === '--double-prev' && arr[i-1] != '--discard-next'){
        transform.push(arr[i]);
      }
-     if(arr[i+1] === '--discard-prev' && arr[i-1] != '--discard-next' && arr[i] != undefined){
+     if(arr[i+1] === '--discard-prev' && arr[i-1] != '--discard-next'){
        transform.pop();
      }
-     if(arr[i-1] === '--double-next' && arr[i] != undefined){
+     if(arr[i-1] === '--double-next'){
        transform.push(arr[i]);
      }
-     if(arr[i-1] === '--discard-next' && arr[i] != undefined){
+     if(arr[i-1] === '--discard-next'){
        transform.pop();
      }
    }
